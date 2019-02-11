@@ -5,11 +5,11 @@
 jQuery.noConflict();
 jQuery(function() {
   jQuery('.hatena-module-profile a.hatena-id-link').after(
-    ' / <a href="https://twitter.com/rptrryo">' +
+    ' / <a href="https://twitter.com/XXXX">' +
     '<i class="fab fa-twitter-square"></i></a>' +
-    ' / <a href="https://github.com/rptrryo">' +
+    ' / <a href="https://github.com/XXXX">' +
     '<i class="fab fa-github-square"></i></a>' +
-    ' / <a href="http://qiita.com/rptrryo">' +
+    ' / <a href="http://qiita.com/XXXX">' +
     '<span class="fa-stack" style="font-size: 50%">' +
     '<i class="fa fa-square fa-stack-2x"></i>' +
     '<i class="fa fa-search fa-stack-1x fa-inverse fa-2x"></i>' +
