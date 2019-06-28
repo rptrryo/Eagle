@@ -2,31 +2,36 @@
 
 <canvas id="polarChart" width="400" height="400"></canvas>
 <script type="text/javascript">
-var chartEl1 = document.getElementById("polarChart"),
-	chartFlag1 = false;
+var pChart = document.getElementById("polarChart"),
+	pChartAnimFlag = false;
 
-// １つ目のチャート
-var chart1Func = function() {
-	var ctx = chartEl1.getContext('2d'),
+var 5labels = ["読みやすさ", "深み", "新感覚", "すっきり", "収まり"];
+var 5bgcolors = ["#33658A", "#86BBD8", "#758E4F", "#F6AE2D", "#F26419"];
+var 5data = [3,1,2,2,5];
+var chartTitle = '彼女は頭が悪いから';
+
+// ポーラーチャート
+function pChartFunc (5labels, 5bgcolors, 5data, chartTitle) {
+	var ctx = pChart.getContext('2d'),
 	chart = new Chart(ctx, {
   type: 'polarArea',
   data: {
-    labels: ["読みやすさ", "深み", "新感覚", "すっきり", "収まり"],
+    labels: [5labels[0], 5labels[1], 5labels[2], 5labels[3], 5labels[4]],
     datasets: [{
       backgroundColor: [
-        "#33658A",
-        "#86BBD8",
-        "#758E4F",
-        "#F6AE2D",
-        "#F26419"
+        5bgcolors[0],
+        5bgcolors[1],
+        5bgcolors[2],
+        5bgcolors[3],
+        5bgcolors[4]
       ],
-      data: [3, 1, 2, 2, 5]
+      data: [5data[0],5data[1],5data[2],5data[3],5data[4]]
     }]
   },
 options: {
             title: {
                 display: true,
-                text: '彼女は頭が悪いから'
+                text: chartTitle
             },
             scale:{
                 ticks:{
@@ -40,19 +45,19 @@ options: {
 };
 
 // スクロール処理
-var pieGraphAnim = function() {
+function pChartAnim (5labels, 5bgcolors, 5data, chartTitle) {
 	var wy = window.pageYOffset,
 		wb = wy + screen.height - 300, // ウィンドウの最下部位置を取得
 		// 各チャートの位置を取得
-		chartElPos1 = wy + chartEl1.getBoundingClientRect().top;
+		pChartPos = wy + pChart.getBoundingClientRect().top;
 
 	// チャートの位置がウィンドウの最下部位置を超えたら起動
-	if ( wb > chartElPos1 && chartFlag1 == false ) {
-		chart1Func();
-		chartFlag1 = true;
+	if ( wb > pChartPos && pChartAnimFlag == false ) {
+		pChartFunc(5labels, 5bgcolors, 5data, chartTitle);
+		pChartAnimFlag = true;
 	}
 };
 
-window.addEventListener('load', pieGraphAnim); // 読み込み時の処理
-window.addEventListener('scroll', pieGraphAnim); // スクロール時の処理
+window.addEventListener('load', pChartAnim(5labels, 5bgcolors, 5data, chartTitle)); // 読み込み時の処理
+window.addEventListener('scroll', pChartAnim(5labels, 5bgcolors, 5data, chartTitle)); // スクロール時の処理
 </script>  
