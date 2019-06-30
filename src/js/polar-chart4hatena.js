@@ -19,7 +19,7 @@
 	    chart = new Chart(ctx, {
         type: 'polarArea',
         data: {
-          fiveLabels: [fiveLabels[0], fiveLabels[1], fiveLabels[2], fiveLabels[3], fiveLabels[4]],
+          labels: [fiveLabels[0], fiveLabels[1], fiveLabels[2], fiveLabels[3], fiveLabels[4]],
           datasets: [{
             backgroundColor: [
               filveBgColors[0],
