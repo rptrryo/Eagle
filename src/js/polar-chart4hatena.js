@@ -1,40 +1,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-
 <canvas id="polarChart" width="400" height="400"></canvas>
 <script type="text/javascript">
   var pChart = document.getElementById("polarChart"),
     pChartAnimFlag = false;
-  
-  var fiveLabels = [1, 2, 3, 5, 4];
-  var fiveBgColors = ["#33658A", "#86BBD8", "#758E4F", "#F6AE2D", "#F26419"];
-  var fiveDatas = [3,1,2,2,5];
-  var chartTitle = '彼女は頭が悪いから';
 
-  window.addEventListener('load', pChartAnim(fiveLabels, fiveBgColors, fiveDatas, chartTitle)); // 読み込み時の処理
-  window.addEventListener('scroll', pChartAnim(fiveLabels, fiveBgColors, fiveDatas, chartTitle)); // スクロール時の処理
-    
   // ポーラーチャート
-  function pChartFunc (fiveLabels, fiveBgColors, fiveDatas, chartTitle) {
+var pChartFunc = function () {
 	  var ctx = pChart.getContext('2d'),
 	    chart = new Chart(ctx, {
         type: 'polarArea',
         data: {
-          labels: [fiveLabels[0], fiveLabels[1], fiveLabels[2], fiveLabels[3], fiveLabels[4]],
+          labels: ["観やすさ", "深み", "爽快感", "闇が深い", "収まり"],
           datasets: [{
             backgroundColor: [
-              fiveBgColors[0],
-              fiveBgColors[1],
-              fiveBgColors[2],
-              fiveBgColors[3],
-              fiveBgColors[4]
+              "#93B5C6", "#DDEDAA", "#F0CF65", "#D7816A", "#BD4F6C"
             ],
-            data: [fiveDatas[0],fiveDatas[1],fiveDatas[2],fiveDatas[3],fiveDatas[4]]
+            data: [3,3,4,5,4]
           }]
         },
         options: {
           title: {
             display: true,
-            text: chartTitle
+            text: 'スノーデン'
           },
           scale:{
             ticks: {
@@ -48,7 +35,7 @@
   };
 
   // スクロール処理
-  function pChartAnim (fiveLabels, fiveBgColors, fiveDatas, chartTitle) {
+var pChartAnim = function () {
 	  var wy = window.pageYOffset,
       wb = wy + screen.height - 300, // ウィンドウの最下部位置を取得
       // 各チャートの位置を取得
@@ -56,8 +43,10 @@
   
     // チャートの位置がウィンドウの最下部位置を超えたら起動
 	  if ( wb > pChartPos && pChartAnimFlag == false ) {
-      pChartFunc(fiveLabels, fiveBgColors, fiveDatas, chartTitle);
+      pChartFunc();
       pChartAnimFlag = true;
 	  }
   };
+  window.addEventListener('load', pChartAnim); // 読み込み時の処理
+  window.addEventListener('scroll', pChartAnim); // スクロール時の処理
 </script>
